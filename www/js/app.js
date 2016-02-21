@@ -6,7 +6,7 @@
 angular.module('starter', ['ionic','starter.controllers','starter.services','ngSanitize','ngCordova'])
 
 
-  .run(function ($ionicPlatform) {
+  .run(function ($ionicPlatform,$ionicPopup,$ionicHistory) {
     $ionicPlatform.ready(function () {
       if (window.cordova && window.cordova.plugins.Keyboard) {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -21,6 +21,33 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
       if (window.StatusBar) {
         StatusBar.styleDefault();
       }
+      //handle android backbutton
+
+      $ionicPlatform.registerBackButtonAction(function (event) {
+        event.preventDefault();
+        function showConfirm() {
+          var confirmPopup = $ionicPopup.confirm({
+            title: '<strong>退出应用?</strong>',
+            template: '你确定要退出应用吗?',
+            okText: '退出',
+            cancelText: '取消'
+          });
+
+          confirmPopup.then(function (res) {
+            if (res) {
+              ionic.Platform.exitApp();
+            } else {
+              // Don't close
+            }
+          });
+        }
+        if($ionicHistory.currentStateName() == "home" || $ionicHistory.currentStateName() == "login"){
+          showConfirm();
+        }
+        else {
+          $ionicHistory.goBack();
+        }
+      }, 100);
     });
   })
   .value(
@@ -37,24 +64,5 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
         url:'/home',
         templateUrl: "template/home.html"
       })
-    .state('welcome', {
-      url: '/welcome',
-      templateUrl: 'template/welcome.html',
-      controller: 'welcomeCtrl'
-    })
-    function checkLocalToken(){
-      $scope.user = User.loadUserInfo();
-      var token = User.loadToken();
-      if(token && $scope.user.id){
-        User.getUserById($scope.user.id).then(function(data){
-          $rootScope.currentUser = data;
-          //聊天登录
-          ChatDetail.login(data.id);
-          $state.go('tab.main',{},{reload:true});
-        })
-      }else if($scope.user.id){
-        $scope.user.id = undefined;
-      }
-    };
-    $urlRouterProvider.otherwise('/welcome');
+    $urlRouterProvider.otherwise('/login');
   })

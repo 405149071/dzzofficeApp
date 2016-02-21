@@ -1,7 +1,7 @@
 var url_base = "http://www.17neitui.com/api";
 var url_base1 = "http://www.17neitui.com/rest";
 var chat_server = "http://www.17neitui.com:80/";
-//var socket = io.connect(chat_server, {reconnectionAttempts:3,reconnectionDelay: 3000, timeout: 30000});
+
 
 //Auth
 var url_auth = url_base+"/auth";
@@ -12,20 +12,6 @@ var url_auth_sms_randcode = url_auth + "/sms/randcode";
 //Users
 var url_users = url_base + "/users";
 
-//chat
-var url_contact = url_base1 + "/contact";
-var url_chathistory = url_base1 + "/chat/history";
-var url_chatcreate = url_base1 + "/chat/create";
-var url_users_jobs = url_users + "/jobs";
-var url_users_edus = url_users + "/edus";
-
-
-url_users_jobs_job = function(id){
-  return url_users_jobs+"/"+id;
-}
-url_users_edus_edu = function(id){
-  return url_users_edus+"/"+id;
-}
 
 url_users_user = function(id){
   return url_users + "/"+id;

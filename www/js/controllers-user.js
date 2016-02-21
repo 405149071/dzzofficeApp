@@ -3,6 +3,18 @@ angular.module('starter.controllers')
   // -----------------User
   .controller('loginCtrl', function ($scope,$rootScope, $ionicLoading, $ionicPopup, $timeout,$state,User) {
     $scope.doLogin = function (user) {
+      function checkLocalToken(){
+        $scope.user = User.loadUserInfo();
+        var token = User.loadToken();
+        console.log(token);
+        console.log($scope.user);
+        if(token && $scope.user.id){
+          User.getUserById($scope.user.id).then(function(data){
+            $rootScope.currentUser = data;
+            $state.go('home');
+          })
+        }
+      };
       if (!user || !user.uname) {
         return;
       }
@@ -35,7 +47,9 @@ angular.module('starter.controllers')
       $timeout(function () {
         $ionicLoading.hide(); //由于某种原因3秒后关闭弹出
       }, 1500);
+      checkLocalToken();
     }
+
   })
     .controller('userLogoutCtrl',function($scope,$state,$ionicHistory,$ionicPopup){
 
