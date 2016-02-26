@@ -26,7 +26,7 @@ angular.module('starter.controllers')
 
           if (data == undefined || data == "") {
             $ionicLoading.show({
-              template: '<div>用户名密码不一致，请重新输入</div>'
+              template: '<div>用户名密码不一致，请重新输入</div>',
             });
           } else if (data.id != undefined) {
             $ionicHistory.clearHistory();
