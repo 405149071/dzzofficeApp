@@ -37,7 +37,7 @@
   border-color: transparent;
 }
 /*---------------------------------------------------------home------------------------------------------------------------------*/
-#home .bar-header button{
+#home .bar-header .button{
   width: 35px;
   height: 35px;
   border-radius: 100px;
@@ -45,6 +45,12 @@
   padding-left: 0px;
   padding-right: 0px;
 }
-#home .bar-header button i{
+#home .bar-header .button i{
 font-size: 25px;
+}
+
+/*----------------------------------logout------------------------------------------------*/
+#logout{
+  width: 100%;
+  height: 100%;
 }

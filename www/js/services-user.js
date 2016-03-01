@@ -2,9 +2,9 @@
 
 angular.module('starter.services')
 .factory('User',function($http,$cordovaContacts){
-  var LOCAL_TOKEN_KEY = "17NEITUI_TOKEN_KEY";
-  var LOCAL_USERID_KEY = "17NEITUI_USERID_KEY";
-  var LOCAL_PHONE_KEY = "17NEITUI_PHONE_KEY";
+  var LOCAL_TOKEN_KEY = "DZZOFFICE_TOKEN_KEY";
+  var LOCAL_USERID_KEY = "DZZOFFICE_USERID_KEY";
+  var LOCAL_USERNAME_KEY = "DZZOFFICE_USERNAME_KEY";
 
   function useCredentials(token) {
     isAuthenticated = true;
@@ -30,9 +30,9 @@ angular.module('starter.services')
   };
 
 
-  function storeUserInfo(userId,phone){
+  function storeUserInfo(userId, username){
     window.localStorage.setItem(LOCAL_USERID_KEY,userId);
-    window.localStorage.setItem(LOCAL_PHONE_KEY,phone);
+    window.localStorage.setItem(LOCAL_USERNAME_KEY,username);
   }
 
   function uploadContacts(id,contacts){
@@ -80,8 +80,8 @@ angular.module('starter.services')
 
     loadUserInfo : function(){
       var id = window.localStorage.getItem(LOCAL_USERID_KEY);
-      var phone = window.localStorage.getItem(LOCAL_PHONE_KEY);
-      return {id:id, phone: phone};
+      var username = window.localStorage.getItem(LOCAL_USERNAME_KEY);
+      return {id:id, username: username};
     },
 
     loadToken : function(){
@@ -101,11 +101,11 @@ angular.module('starter.services')
 
     authorization : function(user){
       return $http.post(url_authorization,user).then(function(response, status, headers, config){
-        if(response.data && response.data.token){
-          var token = response.data.token;
+        if(response.data && response.data.data.token){
+          var token = response.data.data.token;
           storeToken(token);
-          storeUserInfo(response.data.id,response.data.phone)
-          return response.data;
+          storeUserInfo(response.data.data.uid, response.data.data.username)
+          return response.data.data;
         };
         return null;
       });
@@ -116,7 +116,7 @@ angular.module('starter.services')
         if(response.data && response.data.token){
           var token = response.data.token;
           storeToken(token);
-          storeUserInfo(response.data.id,response.data.phone)
+          storeUserInfo(response.data.id, response.data.phone)
           return response.data;
         };
         return null;
@@ -128,7 +128,7 @@ angular.module('starter.services')
         if(response.data && response.data.token){
           var token = response.data.token;
           storeToken(token);
-          storeUserInfo(response.data.id,response.data.phone)
+          storeUserInfo(response.data.id, response.data.phone)
           return response.data;
         };
         return null;

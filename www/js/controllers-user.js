@@ -1,13 +1,13 @@
 angular.module('starter.controllers')
 
   // -----------------User
-  .controller('loginCtrl', function ($scope,$rootScope, $ionicLoading, $ionicPopup, $timeout,$state,User) {
+  .controller('loginCtrl', function ($scope,$rootScope, $ionicLoading, $ionicPopup, $timeout,$state,User,$ionicHistory) {
     $scope.doLogin = function (user) {
       function checkLocalToken(){
         $scope.user = User.loadUserInfo();
         var token = User.loadToken();
-        console.log(token);
-        console.log($scope.user);
+        console.log('token:'+token);
+        console.log('user:'+$scope.user);
         if(token && $scope.user.id){
           User.getUserById($scope.user.id).then(function(data){
             $rootScope.currentUser = data;
@@ -18,7 +18,7 @@ angular.module('starter.controllers')
       if (!user || !user.uname) {
         return;
       }
-      if(user.pwd){
+      if(user.password){
         $ionicLoading.show({
           template: '<div><ion-spinner icon="ios" ></ion-spinner></i></div><div>登陆中</div>'
         });
@@ -28,7 +28,7 @@ angular.module('starter.controllers')
             $ionicLoading.show({
               template: '<div>用户名密码不一致，请重新输入</div>',
             });
-          } else if (data.id != undefined) {
+          } else if (data.uid != undefined) {
             $ionicHistory.clearHistory();
             $ionicHistory.clearCache();
             $rootScope.currentUser = data;
@@ -51,16 +51,20 @@ angular.module('starter.controllers')
     }
 
   })
-    .controller('userLogoutCtrl',function($scope,$state,$ionicHistory,$ionicPopup){
+    .controller('userLogoutCtrl',function($scope,$state,$ionicHistory,$ionicPopup,$rootScope,User){
+        $scope.user = $rootScope.currentUser;
+        $scope.logout=function(){
+          $ionicHistory.clearHistory();
+          $ionicHistory.clearCache();
+          User.removeToken();
+          $state.go('login');
+        }
 
-        $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-            if(toState.name == "tab.logout"){
-                $ionicHistory.clearHistory();
-                $ionicHistory.clearCache();
-                $state.go('login');
-            }
-        });
-
+      $scope.myGoBack = function() {
+        if(!$ionicHistory.goBack()){
+           $state.go('home');
+        };
+      };
     })
 
 

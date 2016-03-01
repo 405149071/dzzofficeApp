@@ -1,16 +1,16 @@
-var url_base = "http://www.17neitui.com/api";
+var url_base = "http://192.168.0.107:83/api.php?";
 var url_base1 = "http://www.17neitui.com/rest";
 var chat_server = "http://www.17neitui.com:80/";
 
 
 //Auth
-var url_auth = url_base+"/auth";
-var url_authorization = url_auth + "/authorization";
+var url_auth = url_base+"mod=user";
+var url_authorization = url_auth + "&action=login";
 var url_auth_passowrd = url_auth + "/password";
 var url_auth_sms_randcode = url_auth + "/sms/randcode";
 
 //Users
-var url_users = url_base + "/users";
+var url_users = url_auth + "&action=userInfo&uid=";
 
 
 url_users_user = function(id){

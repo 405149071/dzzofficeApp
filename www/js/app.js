@@ -6,8 +6,10 @@
 angular.module('starter', ['ionic','starter.controllers','starter.services','ngSanitize','ngCordova'])
 
 
-  .run(function ($ionicPlatform,$ionicPopup,$ionicHistory) {
+  .run(function ($ionicPlatform,$ionicPopup,$ionicHistory,$state,User,$rootScope) {
     $ionicPlatform.ready(function () {
+      var localUser = User.loadUserInfo();
+      var token = User.loadToken();
       if (window.cordova && window.cordova.plugins.Keyboard) {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -48,11 +50,26 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
           $ionicHistory.goBack();
         }
       }, 100);
+      //已登录跳转到主页
+      if(localUser.id){
+            if($ionicHistory.currentStateName() == "login" || !$ionicHistory.currentStateName()){
+              $state.go('home');
+            }
+        if(!$rootScope.currentUser && token){
+          User.getUserById(localUser.id).then(function(data){
+            if(data.status == false){
+              $state.go('login');
+            }else{
+              data = data.data;
+              $rootScope.currentUser = data;
+            }
+
+          });
+        }
+      }
+
     });
   })
-  .value(
-    'user', window.localStorage.getItem('user')
-  )
   .config(function ($stateProvider,$urlRouterProvider) {
     $stateProvider
       .state("login", {
@@ -60,9 +77,15 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
         templateUrl: "template/login.html",
         controller: 'loginCtrl'
       })
+      .state("logout", {
+        url:'/logout',
+        templateUrl: "template/logout.html",
+        controller: 'userLogoutCtrl'
+      })
       .state("home", {
         url:'/home',
-        templateUrl: "template/home.html"
+        templateUrl: "template/home.html",
+        controller: 'homeCtrl'
       })
-    $urlRouterProvider.otherwise('/login');
+      $urlRouterProvider.otherwise('/login');
   })
