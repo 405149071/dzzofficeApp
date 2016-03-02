@@ -37,6 +37,10 @@
   border-color: transparent;
 }
 /*---------------------------------------------------------home------------------------------------------------------------------*/
+#home{
+  width: 100%;
+  height: 100%;
+}
 #home .bar-header .button{
   width: 35px;
   height: 35px;
@@ -48,9 +52,53 @@
 #home .bar-header .button i{
 font-size: 25px;
 }
+#home .content{
+  top:64px
+}
+#home .icon{
+  width: 50%;
+  height: 200px;
 
+}
+#home .content .fengxian{
+  background-image: url("../img/fengxian.jpg");
+  float: left;
+  border-right: 1px solid #C4C4C4;
+  border-bottom: 1px solid #C4C4C4;
+}
+#home .content .shuju{
+  background-image: url("../img/shuju.jpg");
+  float: left;
+  border-right: 1px solid #C4C4C4;
+  border-bottom: 1px solid #C4C4C4;
+}
+#home .content .yuqing{
+  background-image: url("../img/yuqing.jpg");
+  float: left;
+  border-right: 1px solid #C4C4C4;
+  border-bottom: 1px solid #C4C4C4;
+}
+#home .content .qita{
+  background-image: url("../img/qita.jpg");
+  border-right: 1px solid #C4C4C4;
+  float: left;
+  border-bottom: 1px solid #C4C4C4;
+}
 /*----------------------------------logout------------------------------------------------*/
 #logout{
   width: 100%;
   height: 100%;
+}
+#logout .content{
+top:70px
+}
+#logout .info{
+  border: 1px solid #BCBCBC;
+  background-color: #F9F9F9;
+  height: 60px;
+}
+#logout .logoutArea .button{
+  border: 1px solid #BCBCBC;
+  background-color: #F9F9F9;
+  border-radius:0px;
 }
