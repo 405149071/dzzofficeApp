@@ -87,5 +87,10 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
         templateUrl: "template/home.html",
         controller: 'homeCtrl'
       })
+      .state("subCategory", {
+        url:'/subCategory/:catid',
+        templateUrl: "template/subCategory.html",
+        controller: 'subCategory'
+      })
       $urlRouterProvider.otherwise('/login');
   })

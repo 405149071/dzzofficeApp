@@ -21,10 +21,14 @@ url_users_user = function(id){
 
 //news
 var url_news = url_base + "mod=news";
-var url_category_list = url_news + "&action=category";
+
 var url_news_list = url_news+"&action=list";
 var url_news_view = url_news+"&action=view";
 
+url_category_list = function(catid){
+  var url_category_list = url_news + "&action=category";
+  return catid ? url_category_list + "&catid=" + catid : url_category_list;
+}
 
 angular.module('starter.services', [])
 

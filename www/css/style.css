@@ -92,3 +92,37 @@ top:70px
   background-color: #F9F9F9;
   border-radius:0px;
 }
+/*---------------------------------------------------------subCategory------------------------------------------------------------------*/
+#subCategory{
+  width: 100%;
+  height: 100%;
+}
+#subCategory .bar-header .button{
+  width: 35px;
+  height: 35px;
+  border-radius: 100px;
+  border-color: #ffffff;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+#subCategory .bar-header .button i{
+  font-size: 25px;
+}
+#subCategory .bar-header .back-button{
+  color: #fff;
+  font-size: 19px;
+}
+#subCategory .bar-header .back-button i{
+  padding-right: 5px;
+}
+#subCategory .content{
+  top:80px
+}
+#subCategory  li{
+  list-style: none;
+  border-bottom: 1px solid #BCBCBC;
+  padding: 10px;
+}
+#subCategory li a{
+  display: block;
+}
