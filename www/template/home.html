@@ -7,19 +7,74 @@
     </div>
 
     <div class="content">
-      <ul>
-        <a href="">
-          <li class="icon fengxian"></li>
+      <li class="icon" ng-if="categorys[1].unread_count>0">
+        <i>{{categorys[1].unread_count}}</i>
+        <a href="#subCategory/{{categorys[1].catid}}" ng-if="categorys[1].sub!=undefined">
+          <img src="../img/fengxian_count.jpg">
         </a>
-        <a href="">
-          <li class="icon shuju"></li>
+        <a href="#list/{{categorys[1].catid}}" ng-if="categorys[1].sub==undefined">
+          <img src="../img/fengxian_count.jpg">
         </a>
-        <a href="">
-          <li class="icon yuqing"></li>
+      </li>
+      <li class="icon" ng-if="categorys[1].unread_count<=0">
+        <a href="#subCategory/{{categorys[1].catid}}" ng-if="categorys[1].sub!=undefined">
+          <img src="../img/fengxian.jpg">
         </a>
-        <a href="">
-          <li class="icon qita"></li>
+        <a href="#list/{{categorys[1].catid}}" ng-if="categorys[1].sub==undefined">
+          <img src="../img/fengxian.jpg">
         </a>
+      </li>
+      <li class="icon" ng-if="categorys[11].unread_count>0">
+        <i>{{categorys[11].unread_count}}</i>
+        <a href="#subCategory/{{categorys[11].catid}}" ng-if="categorys[11].sub!=undefined">
+          <img src="../img/shuju_count.jpg">
+        </a>
+        <a href="#subCategory/{{categorys[11].catid}}" ng-if="categorys[11].sub==undefined">
+          <img src="../img/shuju_count.jpg">
+        </a>
+      </li>
+      <li class="icon" ng-if="categorys[11].unread_count<=0">
+        <a href="#subCategory/{{categorys[11].catid}}" ng-if="categorys[11].sub!=undefined">
+          <img src="../img/shuju.jpg">
+        </a>
+        <a href="#subCategory/{{categorys[11].catid}}" ng-if="categorys[11].sub==undefined">
+          <img src="../img/shuju.jpg">
+        </a>
+      </li>
+      <li class="icon" ng-if="categorys[2].unread_count>0">
+        <i>{{categorys[2].unread_count}}</i>
+        <a href="#subCategory/{{categorys[2].catid}}" ng-if="categorys[2].sub==undefined">
+          <img src="../img/yuqing_count.jpg">
+        </a>
+        <a href="#subCategory/{{categorys[2].catid}}" ng-if="categorys[2].sub!=undefined">
+          <img src="../img/yuqing_count.jpg">
+        </a>
+      </li>
+      <li class="icon" ng-if="categorys[2].unread_count<=0">
+        <a href="#subCategory/{{categorys[2].catid}}" ng-if="categorys[2].sub==undefined">
+          <img src="../img/yuqing.jpg">
+        </a>
+        <a href="#subCategory/{{categorys[2].catid}}" ng-if="categorys[2].sub!=undefined">
+          <img src="../img/yuqing.jpg">
+        </a>
+      </li>
+      <li class="icon" ng-if="categorys[3].unread_count>0">
+        <i>{{categorys[3].unread_count}}</i>
+        <a href="#subCategory/{{categorys[3].catid}}" ng-if="categorys[3].sub==undefined">
+          <img src="../img/qita_count.jpg">
+        </a>
+        <a href="#subCategory/{{categorys[3].catid}}" ng-if="categorys[3].sub!=undefined">
+          <img src="../img/qita_count.jpg">
+        </a>
+      </li>
+      <li class="icon" ng-if="categorys[3].unread_count<=0">
+        <a href="#subCategory/{{categorys[3].catid}}" ng-if="categorys[3].sub==undefined">
+          <img src="../img/qita.jpg">
+        </a>
+        <a href="#subCategory/{{categorys[3].catid}}" ng-if="categorys[3].sub!=undefined">
+          <img src="../img/qita_count.jpg">
+        </a>
+      </li>
       </ul>
     </div>
   </ion-content>

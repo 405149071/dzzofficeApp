@@ -58,31 +58,21 @@ font-size: 25px;
 #home .icon{
   width: 50%;
   height: 200px;
-
-}
-#home .content .fengxian{
-  background-image: url("../img/fengxian.jpg");
   float: left;
   border-right: 1px solid #C4C4C4;
   border-bottom: 1px solid #C4C4C4;
+  text-align: center;
+  list-style: none;
 }
-#home .content .shuju{
-  background-image: url("../img/shuju.jpg");
-  float: left;
-  border-right: 1px solid #C4C4C4;
-  border-bottom: 1px solid #C4C4C4;
+#home .icon i{
+  position: absolute;
+  left: 38%;
+  top: 0.7em;
+  color: #fff;
 }
-#home .content .yuqing{
-  background-image: url("../img/yuqing.jpg");
-  float: left;
-  border-right: 1px solid #C4C4C4;
-  border-bottom: 1px solid #C4C4C4;
-}
-#home .content .qita{
-  background-image: url("../img/qita.jpg");
-  border-right: 1px solid #C4C4C4;
-  float: left;
-  border-bottom: 1px solid #C4C4C4;
+#home .icon a{
+  display: block;
+  height: 200px;
 }
 /*----------------------------------logout------------------------------------------------*/
 #logout{

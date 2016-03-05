@@ -17,74 +17,14 @@ url_users_user = function(id){
   return url_users + "/"+id;
 }
 
-url_users_user_contacts =  function(id){
-  return url_users_user(id) + "/contacts";
-}
-
-url_users_user_jobs = function(id){
-  return url_users_user(id) + "/jobs";
-}
-url_users_user_edus = function(id){
-  return url_users_user(id) + "/edus";
-}
-
-url_users_user_stat = function(id){
-  return url_users_user(id)+"/stat";
-}
-url_users_user_checkEmail = function(id,email){
- return url_users_user(id)+"/checkemail?email="+email;
-}
-
-//Jobs
-var url_jobs = url_base + "/jobs";
-url_jobs_job = function(id){
-  return url_jobs+"/"+id;
-}
-url_jobs_user = function(userId){
-  return url_jobs+"/user"+"/"+userId;
-}
-url_jobs_user_feeds = function(userId,feedsType){
-  return url_jobs+"/user"+"/"+userId+"/"+feedsType;
-}
-
-url_jobs_job_friends_rec = function(userId,jobId){
-  return url_jobs_job(jobId)+"/rec/"+userId;
-}
-
-url_jobs_job_friends_job = function(userId,jobId){
-  return url_jobs_job(jobId)+"/job/"+userId;
-}
-
-url_jobs_job_friends_employ = function(userId,jobId){
-  return url_jobs_job(jobId)+"/employ/"+userId;
-}
-
-url_jobs_job_all_candidates = function(userId,jobId){
-  return url_jobs_job(jobId)+"/candidates/"+userId;
-}
-
-//Candidates
-var url_candidates = url_base+"/candidates";
-var url_candidates_rec = url_candidates+"/rec";
-var url_candidates_job = url_candidates+"/job";
-var url_candidates_employ = url_candidates+"/employ";
 
 
-url_candidates_candidate = function(candidateId){
-  return url_candidates + "/" + candidateId;
-}
-url_candidates_rec_friends = function(userId){
-  return url_candidates_rec + "/" + userId;
-}
-url_candidates_job_friends = function(userId){
-  return url_candidates_job + "/" + userId;
-}
-url_candidates_employ_friends = function(userId){
-  return url_candidates_employ + "/" + userId;
-}
-url_candidates_unread = function(userId){
-  return url_candidates + "/unread/" + userId;
-}
+//news
+var url_news = url_base + "mod=news";
+var url_category_list = url_news + "&action=category";
+var url_news_list = url_news+"&action=list";
+var url_news_view = url_news+"&action=view";
+
 
 angular.module('starter.services', [])
 
