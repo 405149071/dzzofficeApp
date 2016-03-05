@@ -9,7 +9,7 @@ angular.module('starter.controllers')
       }
     })
   })
-  .controller('subCategory', function ($scope,$stateParams,$ionicHistory,Category) {
+  .controller('subCategoryCtrl', function ($scope,$stateParams,$ionicHistory,Category) {
    var catid = $stateParams.catid;
     Category.loadCategoryList(catid).then(function (data) {
       if (data.status) {

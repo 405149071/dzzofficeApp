@@ -90,7 +90,17 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
       .state("subCategory", {
         url:'/subCategory/:catid',
         templateUrl: "template/subCategory.html",
-        controller: 'subCategory'
+        controller: 'subCategoryCtrl'
+      })
+      .state("list", {
+        url:'/list/:catid',
+        templateUrl: "template/list.html",
+        controller: 'listCtrl'
+      })
+      .state("view", {
+        url:'/view/:id',
+        templateUrl: "template/view.html",
+        controller: 'viewCtrl'
       })
       $urlRouterProvider.otherwise('/login');
   })

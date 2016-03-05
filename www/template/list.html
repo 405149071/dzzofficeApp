@@ -1,0 +1,20 @@
+<!--导航框架之模板视图-->
+<ion-view view-title="欢迎加入" id="list">
+  <ion-content>
+    <div class="bar bar-header bar-positive">
+      <a class="back-button" ng-click="myGoBack()"><i class="ion-chevron-left"></i>返回</a>
+      <h1 class="title">中正舆情管家</h1>
+      <a class="button" href="#logout"><i class="ion-person"></i></a>
+    </div>
+
+    <div class="content">
+      <li class="icon" ng-repeat="l in list track by $index">
+        <a href="#view/{{l.newid}}" >
+          <span>{{l.subject}}</span>
+          <span>{{l.author}}</span>
+        </a>
+      </li>
+      </ul>
+    </div>
+  </ion-content>
+</ion-view>

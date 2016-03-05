@@ -22,14 +22,23 @@ url_users_user = function(id){
 //news
 var url_news = url_base + "mod=news";
 
-var url_news_list = url_news+"&action=list";
-var url_news_view = url_news+"&action=view";
+
+
 
 url_category_list = function(catid){
   var url_category_list = url_news + "&action=category";
   return catid ? url_category_list + "&catid=" + catid : url_category_list;
 }
 
+url_news_list = function(catid){
+  var url_news_list = url_news+"&action=list";
+  return url_news_list + "&catid=" + catid ;
+}
+
+url_news_view = function(id){
+  var url_news_view = url_news+"&action=view";
+  return url_news_view + "&newid=" + id ;
+}
 angular.module('starter.services', [])
 
 .factory('httpInterceptor',function($rootScope,$q){
