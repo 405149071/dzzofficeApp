@@ -1,78 +1,78 @@
 <!--导航框架之模板视图-->
 <ion-view view-title="欢迎加入" id="home">
-  <ion-content>
-    <div class="bar bar-header bar-positive">
-      <h1 class="title">中正舆情管家</h1>
-      <a class="button" href="#logout"><i class="ion-person"></i></a>
-    </div>
 
+  <div class="bar bar-header bar-positive">
+    <h1 class="title">中正舆情管家</h1>
+    <a class="button" href="#logout"><i class="ion-person"></i></a>
+  </div>
+  <ion-content>
     <div class="content">
       <li class="icon" ng-if="categorys[1].unread_count>0">
         <i>{{categorys[1].unread_count}}</i>
         <a href="#subCategory/{{categorys[1].catid}}" ng-if="categorys[1].sub!=undefined">
-          <img src="../img/fengxian_count.jpg">
+          <img src="img/fengxian_count.jpg">
         </a>
         <a href="#list/{{categorys[1].catid}}" ng-if="categorys[1].sub==undefined">
-          <img src="../img/fengxian_count.jpg">
+          <img src="img/fengxian_count.jpg">
         </a>
       </li>
       <li class="icon" ng-if="categorys[1].unread_count<=0">
         <a href="#subCategory/{{categorys[1].catid}}" ng-if="categorys[1].sub!=undefined">
-          <img src="../img/fengxian.jpg">
+          <img src="img/fengxian.jpg">
         </a>
         <a href="#list/{{categorys[1].catid}}" ng-if="categorys[1].sub==undefined">
-          <img src="../img/fengxian.jpg">
+          <img src="img/fengxian.jpg">
         </a>
       </li>
       <li class="icon" ng-if="categorys[11].unread_count>0">
         <i>{{categorys[11].unread_count}}</i>
         <a href="#subCategory/{{categorys[11].catid}}" ng-if="categorys[11].sub!=undefined">
-          <img src="../img/shuju_count.jpg">
+          <img src="img/shuju_count.jpg">
         </a>
         <a href="#list/{{categorys[11].catid}}" ng-if="categorys[11].sub==undefined">
-          <img src="../img/shuju_count.jpg">
+          <img src="img/shuju_count.jpg">
         </a>
       </li>
       <li class="icon" ng-if="categorys[11].unread_count<=0">
         <a href="#subCategory/{{categorys[11].catid}}" ng-if="categorys[11].sub!=undefined">
-          <img src="../img/shuju.jpg">
+          <img src="img/shuju.jpg">
         </a>
         <a href="#list/{{categorys[11].catid}}" ng-if="categorys[11].sub==undefined">
-          <img src="../img/shuju.jpg">
+          <img src="img/shuju.jpg">
         </a>
       </li>
       <li class="icon" ng-if="categorys[2].unread_count>0">
         <i>{{categorys[2].unread_count}}</i>
         <a href="#list/{{categorys[2].catid}}" ng-if="categorys[2].sub==undefined">
-          <img src="../img/yuqing_count.jpg">
+          <img src="img/yuqing_count.jpg">
         </a>
         <a href="#subCategory/{{categorys[2].catid}}" ng-if="categorys[2].sub!=undefined">
-          <img src="../img/yuqing_count.jpg">
+          <img src="img/yuqing_count.jpg">
         </a>
       </li>
       <li class="icon" ng-if="categorys[2].unread_count<=0">
         <a href="#subCategory/{{categorys[2].catid}}" ng-if="categorys[2].sub==undefined">
-          <img src="../img/yuqing.jpg">
+          <img src="img/yuqing.jpg">
         </a>
         <a href="#subCategory/{{categorys[2].catid}}" ng-if="categorys[2].sub!=undefined">
-          <img src="../img/yuqing.jpg">
+          <img src="img/yuqing.jpg">
         </a>
       </li>
       <li class="icon" ng-if="categorys[3].unread_count>0">
         <i>{{categorys[3].unread_count}}</i>
-        <a href="#subCategory/{{categorys[3].catid}}" ng-if="categorys[3].sub==undefined">
-          <img src="../img/qita_count.jpg">
+        <a href="#list/{{categorys[3].catid}}" ng-if="categorys[3].sub==undefined">
+          <img src="img/qita_count.jpg">
         </a>
         <a href="#subCategory/{{categorys[3].catid}}" ng-if="categorys[3].sub!=undefined">
-          <img src="../img/qita_count.jpg">
+          <img src="img/qita_count.jpg">
         </a>
       </li>
       <li class="icon" ng-if="categorys[3].unread_count<=0">
-        <a href="#subCategory/{{categorys[3].catid}}" ng-if="categorys[3].sub==undefined">
-          <img src="../img/qita.jpg">
+        <a href="#list/{{categorys[3].catid}}" ng-if="categorys[3].sub==undefined">
+          <img src="img/qita.jpg">
         </a>
         <a href="#subCategory/{{categorys[3].catid}}" ng-if="categorys[3].sub!=undefined">
-          <img src="../img/qita_count.jpg">
+          <img src="img/qita_count.jpg">
         </a>
       </li>
       </ul>

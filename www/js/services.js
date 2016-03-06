@@ -1,6 +1,4 @@
 var url_base = "http://192.168.0.107:83/api.php?";
-var url_base1 = "http://www.17neitui.com/rest";
-var chat_server = "http://www.17neitui.com:80/";
 
 
 //Auth
@@ -14,7 +12,7 @@ var url_users = url_auth + "&action=userInfo&uid=";
 
 
 url_users_user = function(id){
-  return url_users + "/"+id;
+  return url_users +id;
 }
 
 
@@ -101,7 +99,26 @@ angular.module('starter.services', [])
     }
   }
 })
+  .factory('Helper',function($ionicPopup,$state){
+    return {
+      noLoginPopup:function(){
+        var confirmPopup = $ionicPopup.confirm({
+          title: '<strong>提示</strong>',
+          template: '检测到你已退出，重新登陆？',
+          okText: '确认',
+          cancelText: '取消'
+        });
 
+        confirmPopup.then(function (res) {
+          if (res) {
+            $state.go('login');
+          } else {
+            ionic.Platform.exitApp();
+          }
+        });
+      }
+    }
+  })
 .config(function ($httpProvider) {
   $httpProvider.interceptors.push('httpInterceptor');
 

@@ -47,7 +47,9 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
           showConfirm();
         }
         else {
-          $ionicHistory.goBack();
+          if(!$ionicHistory.goBack()){
+            $state.go('home');
+          };
         }
       }, 100);
       //已登录跳转到主页

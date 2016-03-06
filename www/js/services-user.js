@@ -35,46 +35,6 @@ angular.module('starter.services')
     window.localStorage.setItem(LOCAL_USERNAME_KEY,username);
   }
 
-  function uploadContacts(id,contacts){
-    return $http.post(url_users_user_contacts(id),contacts).then(function(response){
-      return response.data;
-    })
-  }
-
-  function getAllContacts() {
-      var options = {};
-      options.filter = "";
-      options.multiple = true;
-      var res =  $cordovaContacts.find(options).then(function(allContacts) { //omitting parameter to .find() causes all contacts to be returned
-        contacts = [];
-        for(var i=0;i<allContacts.length;i++){
-          var c = allContacts[i];
-          if(c.phoneNumbers){
-            for(var j=0;j<c.phoneNumbers.length;j++){
-                contact = {}
-                contact.name="";
-                if(c.name)
-                    contact.name=c.name.formatted;
-                contact.phone = c.phoneNumbers[j].value;
-                contacts.push(contact);
-            }
-          }
-        }
-        return contacts;
-
-      },function(error){
-          console.log('getAllContacts error',error);
-      })
-      return res;
-  }
-
-  function updateSyncConstactsStatus(userId,status){
-      user={id:userId,syncContacts:status}
-      return $http.put(url_users_user(userId),user).then(function(response){
-        return response.data;
-      });
-  }
-
   return {
 
 
@@ -111,17 +71,6 @@ angular.module('starter.services')
       });
     },
 
-    updatePassword : function(user){
-      return $http.put(url_auth_passowrd,user).then(function(response){
-        if(response.data && response.data.token){
-          var token = response.data.token;
-          storeToken(token);
-          storeUserInfo(response.data.id, response.data.phone)
-          return response.data;
-        };
-        return null;
-      });
-    },
 
     add : function(user){
       return $http.post(url_users,user).then(function(response){
@@ -148,24 +97,7 @@ angular.module('starter.services')
       })
     },
 
-    sendSMS : function(phone){
-      return $http.post(url_auth_sms_randcode,{"phone":phone}).then(function(response){
-        return response.data;
-      })
-    },
 
-    syncContacts : function(userId){
-      getAllContacts().then(function(contacts){
-        uploadContacts(userId,contacts).then(function(data){
-          updateSyncConstactsStatus(userId,1);
-          return data;
-        })
-      })
-    },
-
-    disSyncContacts : function(userId){
-      updateSyncConstactsStatus(userId,0);
-    }
 
   }
 
