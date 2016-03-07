@@ -98,12 +98,30 @@ a,h1,button{
   height: 100%;
 }
 #logout .content{
-top:70px
+top:80px
 }
 #logout .info{
   border: 1px solid #BCBCBC;
   background-color: #F9F9F9;
-  height: 60px;
+  padding: 20px;
+  height: 90px;
+  line-height: 85px;
+}
+#logout .info .account,#logout .info .avatar{
+  float: left;
+}
+#logout .info .avatar img{
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  width: 56px;
+}
+#logout .info .account{
+  line-height: 20px;
+  padding-left: 20px;
+}
+#logout .info .account h3{
+  color:#69A8D9 ;
 }
 #logout .logoutArea .button{
   border: 1px solid #BCBCBC;
@@ -126,6 +144,9 @@ top:70px
 #subCategory .content{
   top:80px
 }
+#subCategory .content span{
+
+}
 #subCategory  li{
   list-style: none;
   border-bottom: 1px solid #BCBCBC;
@@ -143,7 +164,42 @@ top:70px
 #list .content{
   top:64px
 }
-/*---------------------------------------------------------view------------------------------------------------------------------*/
+#list .content li{
+  border-bottom: 1px solid #E0E0E0 ;
+}
+#list .content li a div{
+  float: left;
+}
+#list .content li a{
+  padding: 15px;
+  display: block;
+  line-height: 40px;
+  height: 100px;
+  padding-left: 30px;
+}
+#list .content li .icon{
+  padding-right: 30px;
+  font-size: 35px;
+}
+#list .content li a{
+  line-height: 15px;
+}
+#list .content li h3{
+  color: #387ef5;
+}
+#list .content li span{
+  color: #D9D9D9;
+}
+#list .content .more{
+  border-bottom: 1px solid #C9C9C9;
+  border-top: 1px solid #C9C9C9;
+  background-color: #DCDCDC;
+  margin-top: 10px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+  /*---------------------------------------------------------view------------------------------------------------------------------*/
 #view{
   width: 100%;
   height: 100%;

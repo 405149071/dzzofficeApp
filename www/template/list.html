@@ -1,20 +1,30 @@
 <!--导航框架之模板视图-->
 <ion-view view-title="欢迎加入" id="list">
 
-    <div class="bar bar-header bar-positive">
-      <a class="back-button" ng-click="myGoBack()"><i class="ion-chevron-left"></i>返回</a>
-      <h1 class="title">中正舆情管家</h1>
-      <a class="button" href="#logout"><i class="ion-person"></i></a>
-    </div>
+  <div class="bar bar-header bar-positive">
+    <a class="back-button" ng-click="myGoBack()"><i class="ion-chevron-left"></i>返回</a>
+    <h1 class="title">中正舆情管家</h1>
+    <a class="button" href="#logout"><i class="ion-person"></i></a>
+  </div>
   <ion-content>
     <div class="content">
-      <li class="icon" ng-repeat="l in list track by $index">
-        <a href="#view/{{l.newid}}" >
-          <span>{{l.subject}}</span>
-          <span>{{l.author}}</span>
-        </a>
-      </li>
+      <ul>
+        <li ng-repeat="l in list track by $index" ng-if="list.length>0">
+          <a href="#view/{{l.newid}}">
+            <div class="icon">
+              <i class="ion-android-star"></i>
+            </div>
+            <div>
+              <h3>{{l.subject}}</h3>
+              <span ng-bind-html="l.author+l.dateDiff"></span>
+            </div>
+          </a>
+        </li>
+        <li class="icon"  ng-if="!list">
+          暂无最新数据
+        </li>
       </ul>
+      <div class="more" ng-click="more()">历史信息>></div>
     </div>
   </ion-content>
 </ion-view>

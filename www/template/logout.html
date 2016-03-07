@@ -6,12 +6,16 @@
     <h1 class="title">个人信息</h1>
 
   </div>
-  <ion-content>
+  <ion-content scroll="false">
     <div class="content">
       <div class="info">
-        <img src="">
-        {{user.username}}
-        {{user.email}}
+        <div class="avatar">
+        <img src="{{user.avatar}}">
+        </div>
+        <div class="account">
+          <h3>{{user.username}}</h3>
+          {{user.email}}
+        </div>
       </div>
       <div class="logoutArea">
         <button class="button button-block" type="button" ng-click="logout()">退出</button>

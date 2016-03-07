@@ -10,6 +10,23 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
     $ionicPlatform.ready(function () {
       var localUser = User.loadUserInfo();
       var token = User.loadToken();
+      //已登录跳转到主页
+      if(localUser.id){
+        if($ionicHistory.currentStateName() == "login" || !$ionicHistory.currentStateName()){
+          $state.go('home');
+        }
+        if(!$rootScope.currentUser && token){
+          User.getUserById(localUser.id).then(function(data){
+            if(data.status == false){
+              $state.go('login');
+            }else{
+              data = data.data;
+              $rootScope.currentUser = data;
+            }
+
+          });
+        }
+      }
       if (window.cordova && window.cordova.plugins.Keyboard) {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -52,23 +69,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
           };
         }
       }, 100);
-      //已登录跳转到主页
-      if(localUser.id){
-            if($ionicHistory.currentStateName() == "login" || !$ionicHistory.currentStateName()){
-              $state.go('home');
-            }
-        if(!$rootScope.currentUser && token){
-          User.getUserById(localUser.id).then(function(data){
-            if(data.status == false){
-              $state.go('login');
-            }else{
-              data = data.data;
-              $rootScope.currentUser = data;
-            }
 
-          });
-        }
-      }
 
     });
   })
@@ -104,5 +105,5 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
         templateUrl: "template/view.html",
         controller: 'viewCtrl'
       })
-      $urlRouterProvider.otherwise('/login');
+      $urlRouterProvider.otherwise('/home');
   })

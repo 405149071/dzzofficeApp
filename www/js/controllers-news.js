@@ -2,6 +2,7 @@ angular.module('starter.controllers')
 
   // -----------------User
   .controller('listCtrl', function ($scope, $stateParams,$rootScope, $ionicLoading, $ionicPopup, $timeout, $state, Views,$ionicHistory,Category,Helper) {
+    $scope.Curepage = 1;
     var hasSubCategory = false;
     $ionicLoading.show({
       template: '<div><ion-spinner icon="ios" ></ion-spinner></i></div><div>加载中</div>'
@@ -33,6 +34,19 @@ angular.module('starter.controllers')
           $state.go('home');
       };
     };
+    $scope.more=function(){
+      $ionicLoading.show({
+        template: '<div><ion-spinner icon="ios" ></ion-spinner></i></div><div>加载中</div>'
+      });
+      Views.loadList(catid).then(function (data) {
+        $ionicLoading.hide();
+        if (data.status) {
+          $scope.list = data.data.list;
+        }else{
+          Helper.noLoginPopup();
+        }
+      });
+    }
   })
   .controller('viewCtrl', function ($scope,$stateParams,$ionicHistory,Views,$state,$ionicLoading,Helper ) {
     $ionicLoading.show({

@@ -6,8 +6,8 @@ angular.module('starter.controllers')
       function checkLocalToken(){
         $scope.user = User.loadUserInfo();
         var token = User.loadToken();
-        console.log('token:'+token);
-        console.log('user:'+$scope.user);
+        console.log(token);
+        console.log($scope.user);
         if(token && $scope.user.id){
           User.getUserById($scope.user.id).then(function(data){
             $rootScope.currentUser = data;
@@ -51,7 +51,7 @@ angular.module('starter.controllers')
     }
 
   })
-    .controller('userLogoutCtrl',function($scope,$state,$ionicHistory,$ionicPopup,$rootScope,User){
+    .controller('userLogoutCtrl',function($scope,$state,$ionicHistory,$ionicPopup,$rootScope,User){console.log($rootScope.currentUser);
         $scope.user = $rootScope.currentUser;
         $scope.logout=function(){
           $ionicHistory.clearHistory();
