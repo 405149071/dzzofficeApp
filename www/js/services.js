@@ -28,8 +28,9 @@ url_category_list = function(catid){
   return catid ? url_category_list + "&catid=" + catid : url_category_list;
 }
 
-url_news_list = function(catid){
+url_news_list = function(catid,isHistory){
   var url_news_list = url_news+"&action=list";
+  url_news_list = isHistory ? url_news_list + '&isHistory=1' : url_news_list;
   return url_news_list + "&catid=" + catid ;
 }
 

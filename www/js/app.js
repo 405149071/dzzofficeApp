@@ -40,6 +40,12 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
       if (window.StatusBar) {
         StatusBar.styleDefault();
       }
+
+      //jpush
+      //启动极光推送服务
+      window.plugins.jPushPlugin.init();
+//调试模式
+      window.plugins.jPushPlugin.setDebugMode(false);
       //handle android backbutton
 
       $ionicPlatform.registerBackButtonAction(function (event) {

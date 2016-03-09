@@ -11,7 +11,10 @@
       <ul>
         <li ng-repeat="l in list track by $index" ng-if="list.length>0">
           <a href="#view/{{l.newid}}">
-            <div class="icon">
+            <div class="icon gray" ng-if="l.isread">
+              <i class="ion-android-star"></i>
+            </div>
+            <div class="icon" ng-if="!l.isread">
               <i class="ion-android-star"></i>
             </div>
             <div>

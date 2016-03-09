@@ -38,7 +38,7 @@ angular.module('starter.controllers')
       $ionicLoading.show({
         template: '<div><ion-spinner icon="ios" ></ion-spinner></i></div><div>加载中</div>'
       });
-      Views.loadList(catid).then(function (data) {
+      Views.loadList(catid,true).then(function (data) {
         $ionicLoading.hide();
         if (data.status) {
           $scope.list = data.data.list;

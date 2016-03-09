@@ -83,9 +83,9 @@ a,h1,button{
   list-style: none;
 }
 #home .icon i{
-  position: absolute;
-  left: 38%;
-  top: 0.7em;
+  position: relative;
+  left: 45px;
+  top: 30px;
   color: #fff;
 }
 #home .icon a{
@@ -142,18 +142,24 @@ top:80px
   padding-right: 5px;
 }
 #subCategory .content{
-  top:80px
-}
-#subCategory .content span{
-
+  top:55px
 }
 #subCategory  li{
   list-style: none;
   border-bottom: 1px solid #BCBCBC;
   padding: 10px;
 }
-#subCategory li a{
-  display: block;
+#subCategory ul li a{
+  display: inline-block;
+  width: 100%;
+}
+#subCategory li > a {
+  font-size: 20px;
+  vertical-align: middle;
+  text-decoration: initial;
+}
+#subCategory li > a > img {
+  vertical-align: middle;
 }
 /*---------------------------------------------------------list------------------------------------------------------------------*/
 #list{
@@ -172,17 +178,16 @@ top:80px
 }
 #list .content li a{
   padding: 15px;
-  display: block;
-  line-height: 40px;
-  height: 100px;
-  padding-left: 30px;
+  display: inline-block;
+
 }
 #list .content li .icon{
   padding-right: 30px;
   font-size: 35px;
+  padding-top: 10px;
 }
-#list .content li a{
-  line-height: 15px;
+#list .content .gray{
+  color: #B0B0B0;
 }
 #list .content li h3{
   color: #387ef5;

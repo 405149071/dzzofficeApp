@@ -8,6 +8,7 @@
     </div>
   <ion-content>
     <div class="content">
+      <ul>
       <li class="icon" ng-repeat="category in categorys[catid]['sub'] track by $index" ng-if="categorys[catid]['sub'].length>0">
         <a href="#list/{{category.catid}}" >
           <img src="img/subCategory.jpg">
