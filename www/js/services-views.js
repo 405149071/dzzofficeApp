@@ -4,8 +4,8 @@ angular.module('starter.services')
 .factory('Views',function($http){
 
   return {
-    loadList : function(catid,isHistory){
-      return $http.get(url_news_list(catid,isHistory)).then(function(response){
+    loadList : function(catid,isHistory,page){
+      return $http.get(url_news_list(catid,isHistory,page)).then(function(response){
         return response.data;
       })
     },

@@ -1,7 +1,7 @@
 
 
 angular.module('starter.services')
-.factory('User',function($http,$cordovaContacts){
+.factory('User',function($http){
   var LOCAL_TOKEN_KEY = "DZZOFFICE_TOKEN_KEY";
   var LOCAL_USERID_KEY = "DZZOFFICE_USERID_KEY";
   var LOCAL_USERNAME_KEY = "DZZOFFICE_USERNAME_KEY";

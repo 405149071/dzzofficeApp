@@ -43,9 +43,9 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
 
       //jpush
       //启动极光推送服务
-      window.plugins.jPushPlugin.init();
+    //  window.plugins.jPushPlugin.init();
 //调试模式
-      window.plugins.jPushPlugin.setDebugMode(false);
+     // window.plugins.jPushPlugin.setDebugMode(false);
       //handle android backbutton
 
       $ionicPlatform.registerBackButtonAction(function (event) {
