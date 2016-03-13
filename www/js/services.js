@@ -1,4 +1,4 @@
-var url_base = "http://192.168.0.107:83/api.php?";
+var url_base = "http://wj.yuqingol.com/api.php?";
 
 
 //Auth

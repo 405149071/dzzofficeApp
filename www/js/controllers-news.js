@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 
   // -----------------User
-  .controller('listCtrl', function ($scope, $stateParams, $rootScope, $ionicLoading, $ionicPopup, $timeout, $state, Views, $ionicHistory, Category, Helper) {
+  .controller('listCtrl', function ($scope, $stateParams, $rootScope, $ionicLoading, $ionicPopup, $timeout, $state, Views, $ionicHistory, Category, Helper,User) {
     var count = 0;
     var perpage = 0;
     var curepage = 1;
@@ -14,18 +14,20 @@ angular.module('starter.controllers')
     });
     var catid = $stateParams.catid;
     var categorys = Category.loadCategorys();
-    Views.loadList(catid, false, page).then(function (data) {
-      $ionicLoading.hide();
-      if (data.status) {
-        console.log(data.data);
-        count = data.data.count;
-        perpage = data.data.perpage;
-        curepage = data.data.page;
-        $scope.list = data.data.list;
-      } else {
-        Helper.noLoginPopup();
-      }
-    });
+    if(!$rootScope.currentUser && User.loadToken()){
+      User.getUserById($rootScope.localUser.id).then(function(data){
+        if(data.status == false){
+          $state.go('login');
+        }else{
+          data = data.data;
+          $rootScope.currentUser = data;
+          getList(false);
+        }
+      });
+    }else{
+      getList(false);
+    }
+
     $scope.myGoBack = function () {
       if (!$ionicHistory.goBack()) {
         for (index in categorys) {
@@ -50,49 +52,82 @@ angular.module('starter.controllers')
         $ionicLoading.show({
           template: '<div><ion-spinner icon="ios" ></ion-spinner></i></div><div>加载中</div>'
         });
-        Views.loadList(catid, true, page).then(function (data) {
-          $ionicLoading.hide();
-          if (data.status) {
-            count = data.data.count;
-            perpage = data.data.perpage;
-            curepage = data.data.page;
-            if (page > 1) {
-              var data = data.data.list;
-              data.forEach(function (v) {
-                $scope.list.push(v)
-              });
-              if (page == pageCount)
-                loadMore = false;
-            } else {
-              $scope.list = data.data.list;
+        if(!$rootScope.currentUser && User.loadToken()){
+          User.getUserById($rootScope.localUser.id).then(function(data){
+            if(data.status == false){
+              $state.go('login');
+            }else{
+              data = data.data;
+              $rootScope.currentUser = data;
+              getList(true);
             }
-          } else {
-            Helper.noLoginPopup();
-          }
-        });
+          });
+        }else{
+          getList(true);
+        }
+
       }
     }
+    function getList(isLoadMore){
+      Views.loadList(catid, isLoadMore, page).then(function (data) {
+        $ionicLoading.hide();
+        if (data.status) {
+          count = data.data.count;
+          perpage = data.data.perpage;
+          curepage = data.data.page;
+          if (page > 1) {
+            var data = data.data.list;
+            data.forEach(function (v) {
+              $scope.list.push(v)
+            });
+            if (page == pageCount)
+              loadMore = false;
+          } else {
+            $scope.list = data.data.list;
+          }
+        } else {
+          Helper.noLoginPopup();
+        }
+      });
+    }
   })
-  .controller('viewCtrl', function ($scope, $stateParams, $ionicHistory, Views, $state, $ionicLoading, Helper) {
+  .controller('viewCtrl', function ($scope, $stateParams,$rootScope, $ionicHistory, Views, $state, $ionicLoading, Helper,User) {
     $ionicLoading.show({
       template: '<div><ion-spinner icon="ios" ></ion-spinner></i></div><div>加载中</div>'
     });
     var viewId = $stateParams.id;
-    Views.loadView(viewId).then(function (data) {
-      $ionicLoading.hide();
-      if (data.status) {
-        console.log(data.data);
-        $scope.view = data.data;
-      } else {
-        Helper.noLoginPopup();
-      }
-    });
+    if(!$rootScope.currentUser && User.loadToken()){
+      User.getUserById($rootScope.localUser.id).then(function(data){
+        if(data.status == false){
+          $state.go('login');
+        }else{
+          data = data.data;
+          $rootScope.currentUser = data;
+          getView();
+        }
+      });
+    }else{
+      getView();
+    }
+
     $scope.myGoBack = function () {
       if (!$ionicHistory.goBack()) {
         $state.go('list', {catid: $scope.view.catid});
       }
       ;
     };
+
+    function getView(){
+      Views.loadView(viewId).then(function (data) {
+        $ionicLoading.hide();
+        if (data.status) {
+          console.log(data.data);
+          $scope.view = data.data;
+        } else {
+          Helper.noLoginPopup();
+        }
+      });
+    }
   })
 
 

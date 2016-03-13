@@ -1,10 +1,24 @@
 angular.module('starter.controllers')
 
   // -----------------User
-  .controller('homeCtrl', function ($scope, $rootScope, $ionicLoading, $ionicPopup, $timeout, $state, Category,Helper) {
+  .controller('homeCtrl', function ($scope, $rootScope, $ionicLoading, $ionicPopup, $timeout, $state, Category,Helper,User) {
     $ionicLoading.show({
       template: '<div><ion-spinner icon="ios" ></ion-spinner><div>加载中</div></div>'
     });
+    if(!$rootScope.currentUser && User.loadToken()){
+      User.getUserById($rootScope.localUser.id).then(function(data){
+        if(data.status == false){
+          $state.go('login');
+        }else{
+          data = data.data;
+          $rootScope.currentUser = data;
+          getCategory();
+        }
+      });
+    }else{
+      getCategory();
+    }
+  function getCategory(){
     Category.loadCategoryList(0).then(function (data) {
       $ionicLoading.hide();
       if (data.status) {
@@ -12,9 +26,10 @@ angular.module('starter.controllers')
         $scope.categorys = data.data;
         Category.storeCategorys(data.data);
       }else{
-       Helper.noLoginPopup();
+        Helper.noLoginPopup();
       }
     })
+  }
   })
   .controller('subCategoryCtrl', function ($scope,$stateParams,$ionicHistory,Category,$state) {
    var catid = $stateParams.catid;

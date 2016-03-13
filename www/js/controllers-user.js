@@ -1,21 +1,9 @@
 angular.module('starter.controllers')
 
   // -----------------User
-  .controller('loginCtrl', function ($scope, $rootScope, $ionicLoading, $ionicPopup, $timeout, $state, User, $ionicHistory) {
+  .controller('loginCtrl', function ($scope, $rootScope, $ionicLoading, $ionicPopup, $timeout, $state, User, $ionicHistory,$window) {
     var loginStatus = false;
     $scope.doLogin = function (user) {
-      function checkLocalToken() {
-        $scope.user = User.loadUserInfo();
-        var token = User.loadToken();
-        console.log(token);
-        console.log($scope.user);
-        if (token && $scope.user.id) {
-          User.getUserById($scope.user.id).then(function (data) {
-            $rootScope.currentUser = data.data;
-            $state.go('home');
-          })
-        }
-      };
       if (!user || !user.uname) {
         return;
       }
@@ -30,7 +18,8 @@ angular.module('starter.controllers')
               template: '<div>用户名密码不一致，请重新输入</div>',
             });
           } else if (data.uid != undefined) {
-            loginStatus = true;console.log(loginStatus);console.log(1);
+            loginStatus = true;
+            $window.plugins.jPushPlugin.setAlias(data.username);
             $ionicHistory.clearHistory();
             $ionicHistory.clearCache();
             $rootScope.currentUser = data;
@@ -50,11 +39,25 @@ angular.module('starter.controllers')
               $ionicLoading.hide(); //由于某种原因3秒后关闭弹出
             }, 1500);
           }
-          checkLocalToken();
+
         })
       }
     }
-
+    function checkLocalToken() {
+      $scope.user = User.loadUserInfo();
+      var token = User.loadToken();
+      console.log(token);
+      console.log($scope.user);
+      if (token && $scope.user.id) {
+        User.getUserById($scope.user.id).then(function (data) {
+          if(data.data.token==token){
+            $rootScope.currentUser = data.data;
+            $state.go('home');
+          }
+        })
+      }
+    };
+    checkLocalToken();
   })
   .controller('userLogoutCtrl', function ($scope, $state, $ionicHistory, $ionicPopup, $rootScope, User) {
     $scope.user = $rootScope.currentUser;

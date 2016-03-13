@@ -6,26 +6,17 @@
 angular.module('starter', ['ionic','starter.controllers','starter.services','ngSanitize','ngCordova'])
 
 
-  .run(function ($ionicPlatform,$ionicPopup,$ionicHistory,$state,User,$rootScope) {
+  .run(function ($ionicPlatform,$ionicPopup,$ionicHistory,$state,User,$rootScope,$window) {
     $ionicPlatform.ready(function () {
       var localUser = User.loadUserInfo();
-      var token = User.loadToken();
+      $rootScope.localUser = localUser;
       //已登录跳转到主页
-      if(localUser.id){
+      if (localUser.id && User.loadToken()) {
         if($ionicHistory.currentStateName() == "login" || !$ionicHistory.currentStateName()){
           $state.go('home');
         }
-        if(!$rootScope.currentUser && token){
-          User.getUserById(localUser.id).then(function(data){
-            if(data.status == false){
-              $state.go('login');
-            }else{
-              data = data.data;
-              $rootScope.currentUser = data;
-            }
-
-          });
-        }
+      }else{
+        $state.go('login');
       }
       if (window.cordova && window.cordova.plugins.Keyboard) {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -43,9 +34,46 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
 
       //jpush
       //启动极光推送服务
-    //  window.plugins.jPushPlugin.init();
+      //推送初始化
+      var openNotificationInAndroidCallback=function(data){
+        var json=data;
+        if(typeof data === 'string'){
+          json=JSON.parse(data);
+        }
+        var id=json.extras['cn.jpush.android.EXTRA'].id;
+        if(id)
+          $state.go('view',{id:id});
+      }
+      //Android接收到消息
+      var _receiveMessageInAndroidCallback = function (data) {
+        console.log('_receiveMessageInAndroidCallback: ' + data);
+        alert('_receiveMessageInAndroidCallback: ' + data);
+        //do something
+      };
+      //IOS打开通知栏消息
+      var _receiveMessageIniOSCallback = function (data) {
+        console.log('_receiveMessageIniOSCallback: ' + data);
+        alert('_receiveMessageInAndroidCallback: ' + data);
+        var json=data;
+        if(typeof data === 'string'){
+          json=JSON.parse(data);
+        }
+        var id=json.extras['cn.jpush.android.EXTRA'].id;
+        if(id)
+          $state.go('view',{id:id});
+        //do something
+      };
+      $window.plugins.jPushPlugin.init();
+      //注册Android接收到通知事件
+     // $window.plugins.jPushPlugin.receiveMessageInAndroidCallback = _receiveMessageInAndroidCallback
+      //注册IOS打开通知栏事件
+      $window.plugins.jPushPlugin.receiveMessageIniOSCallback = _receiveMessageIniOSCallback;
+      //打开推送消息事件处理
+      $window.plugins.jPushPlugin.openNotificationInAndroidCallback=openNotificationInAndroidCallback;
+
+      $window.plugins.jPushPlugin.setAlias(localUser.username);
 //调试模式
-     // window.plugins.jPushPlugin.setDebugMode(false);
+      $window.plugins.jPushPlugin.setDebugMode(false);
       //handle android backbutton
 
       $ionicPlatform.registerBackButtonAction(function (event) {
@@ -111,5 +139,6 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
         templateUrl: "template/view.html",
         controller: 'viewCtrl'
       })
-      $urlRouterProvider.otherwise('/home');
+     // $urlRouterProvider.otherwise('/home');
   })
+
