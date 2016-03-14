@@ -84,13 +84,16 @@ a,h1,button,h2,h3{
 }
 #home .icon i{
   position: relative;
-  left: 45px;
-  top: 30px;
+  left: 28px;
+  top: 27px;
   color: #fff;
 }
 #home .icon a{
   display: block;
   height: 200px;
+}
+#home .scroll-bar{
+  display: none;
 }
 /*----------------------------------logout------------------------------------------------*/
 #logout{
@@ -161,6 +164,9 @@ top:80px
 #subCategory li > a > img {
   vertical-align: middle;
 }
+#subCategory .scroll-bar{
+  display: none;
+}
 /*---------------------------------------------------------list------------------------------------------------------------------*/
 #list{
   width: 100%;
@@ -204,6 +210,16 @@ top:80px
   line-height: 50px;
   text-align: center;
 }
+#list .content .list_none{
+  background-color: #DCDCDC;
+  border-bottom: 1px solid #C9C9C9;
+  border-top: 1px solid #C9C9C9;
+  height: 30px;
+  line-height: 30px;
+}
+#list .scroll-bar{
+  display: none;
+}
   /*---------------------------------------------------------view------------------------------------------------------------------*/
 #view{
   width: 100%;
@@ -211,24 +227,36 @@ top:80px
 }
 
 #view .content{
-  top:44px
+  top:44px;
+  width: 100%;
+  height: 100%;
+}
+#view .content img{
+  width: 100%;
+  height:100%;
 }
 #view .content .title{
   background-color: #ECECEC;
   border-bottom: 1px solid #DBDBDB;
-  height: 70px;
+  height: 75px;
   margin-bottom: 10px;
 }
 #view .content .title span{
   float: right;
   font-size: 10px;
-  line-height: 100px;
+  line-height: 15px;
   color: #A2A2A2;
+  padding-right: 15px;
 }
 #view .content .title h1{
   float: left;
-  line-height: 70px;
+  line-height: 35px;
   color: #43A1E7;
   font-size: 22px;
   padding-left: 20px;
+  padding-top: 10px;
+  width: 100%;
+}
+#view .content .container{
+  padding: 15px;
 }
