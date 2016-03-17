@@ -28,6 +28,9 @@ a,h1,button,h2,h3{
 .bar-header .back-button i{
   padding-right: 5px;
 }
+.read{
+  color: red;
+}
 /*---------------------------------------------------login-----------------------------------------------------------------------*/
 #login{
   background: url(../img/login.jpg) 0 0 no-repeat;
@@ -91,9 +94,6 @@ a,h1,button,h2,h3{
 #home .icon a{
   display: block;
   height: 200px;
-}
-#home .scroll-bar{
-  display: none;
 }
 /*----------------------------------logout------------------------------------------------*/
 #logout{
@@ -211,11 +211,13 @@ top:80px
   text-align: center;
 }
 #list .content .list_none{
-  background-color: #DCDCDC;
+ /* background-color: #DCDCDC;
   border-bottom: 1px solid #C9C9C9;
-  border-top: 1px solid #C9C9C9;
+  border-top: 1px solid #C9C9C9;*/
   height: 30px;
   line-height: 30px;
+  padding-left: 10px;
+  border-bottom: none ;
 }
 #list .scroll-bar{
   display: none;

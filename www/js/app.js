@@ -71,7 +71,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
       //打开推送消息事件处理
       $window.plugins.jPushPlugin.openNotificationInAndroidCallback=openNotificationInAndroidCallback;
 
-      $window.plugins.jPushPlugin.setAlias(localUser.username);
+      $window.plugins.jPushPlugin.setAlias(localUser.id);
 //调试模式
       $window.plugins.jPushPlugin.setDebugMode(false);
       //handle android backbutton

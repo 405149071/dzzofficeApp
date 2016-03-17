@@ -33,14 +33,14 @@ angular.module('starter.controllers')
   })
   .controller('subCategoryCtrl', function ($scope,$stateParams,$ionicHistory,Category,$state) {
    var catid = $stateParams.catid;
-    /*Category.loadCategoryList(catid).then(function (data) {
+    Category.loadCategoryList(catid).then(function (data) {
      if (data.status) {
      console.log(data.data);
      $scope.categorys = data.data;
      }
-     });*/
-    var categorys= Category.loadCategorys();
-    $scope.categorys = categorys;
+     });
+   // var categorys= Category.loadCategorys();
+   // $scope.categorys = categorys;
     $scope.catid = catid;
     $scope.myGoBack = function() {
       if(!$ionicHistory.goBack()){

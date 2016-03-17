@@ -1,18 +1,18 @@
 <ion-view view-title="欢迎加入" id="login">
   <ion-content  scroll="false">
     <div class="form">
-      <form ng-submit="doLogin(user)" novalidate>
+      <form ng-submit="doLogin(uname,password,isChecked)" novalidate>
         <div>
           <div class="list list-inset">
             <label class="item item-input">
               <i class="icon ion-ios-person-outline"></i>
-              <input type="text" placeholder="账号" ng-model="user.uname">
+              <input type="text" placeholder="账号" ng-model="uname">
             </label>
           </div>
           <div class="list list-inset">
             <label class="item item-input">
               <i class="icon ion-ios-locked-outline"></i>
-              <input type="password" placeholder="密码" ng-model="user.password">
+              <input type="password" placeholder="密码" ng-model="password">
             </label>
           </div>
           <div class="list list-inset">

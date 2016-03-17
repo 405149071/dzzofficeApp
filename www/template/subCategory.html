@@ -9,10 +9,20 @@
   <ion-content>
     <div class="content">
       <ul>
-      <li class="icon" ng-repeat="category in categorys[catid]['sub'] track by $index" ng-if="categorys[catid]['sub'].length>0">
+   <!--   <li class="icon" ng-repeat="category in categorys[catid]['sub'] track by $index" ng-if="categorys[catid]['sub'].length>0">
         <a href="#list/{{category.catid}}" >
           <img src="img/subCategory.jpg">
           <span>{{category.name}}</span>
+        </a>
+      </li>-->
+           <li class="icon" ng-repeat="category in categorys track by $index" >
+        <a href="#list/{{category.catid}}" >
+          <img src="img/subCategory.jpg">
+          <span>
+            {{category.name}}
+            <i ng-if="category.unread_count>0" class="read">({{category.unread_count}})</i>
+          </span>
+
         </a>
       </li>
       </ul>

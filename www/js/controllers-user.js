@@ -2,8 +2,11 @@ angular.module('starter.controllers')
 
   // -----------------User
   .controller('loginCtrl', function ($scope, $rootScope, $ionicLoading, $ionicPopup, $timeout, $state, User, $ionicHistory,$window) {
+    $scope.uname = window.localStorage.getItem('input_user_name');
+    $scope.password = window.localStorage.getItem('input_password');
     var loginStatus = false;
-    $scope.doLogin = function (user) {
+    $scope.doLogin = function (uname,password,isChecked) {
+      user = {'uname': uname, 'password': password, 'isChecked': isChecked};
       if (!user || !user.uname) {
         return;
       }
@@ -19,10 +22,17 @@ angular.module('starter.controllers')
             });
           } else if (data.uid != undefined) {
             loginStatus = true;
-            $window.plugins.jPushPlugin.setAlias(data.username);
+            if (user.isChecked) {
+              window.localStorage.setItem('input_user_name', user.uname);
+              window.localStorage.setItem('input_password', user.password);
+            } else {
+              window.localStorage.setItem('input_user_name', '');
+              window.localStorage.setItem('input_password', '');
+            }
             $ionicHistory.clearHistory();
             $ionicHistory.clearCache();
             $rootScope.currentUser = data;
+            $window.plugins.jPushPlugin.setAlias(data.uid);
             $state.go('home', {reload: true})
           } else {
             $ionicLoading.show({
@@ -59,12 +69,13 @@ angular.module('starter.controllers')
     };
     checkLocalToken();
   })
-  .controller('userLogoutCtrl', function ($scope, $state, $ionicHistory, $ionicPopup, $rootScope, User) {
+  .controller('userLogoutCtrl', function ($scope, $state, $ionicHistory, $ionicPopup, $rootScope, User,$window) {
     $scope.user = $rootScope.currentUser;
     $scope.logout = function () {
       $ionicHistory.clearHistory();
       $ionicHistory.clearCache();
       User.removeToken();
+      $window.plugins.jPushPlugin.setAlias('');
       $state.go('login');
     }
 
