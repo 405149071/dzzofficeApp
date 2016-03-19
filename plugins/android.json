@@ -1,0 +1,37 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cn.jpush.phonegap.JPushPlugin": {
+            "API_KEY": "6e58924c6cf1d0c0171bdbb9",
+            "PACKAGE_NAME": "com.yuqingol.dzzofficeapp"
+        },
+        "cordova-plugin-app-event": {
+            "PACKAGE_NAME": "com.yuqingol.dzzofficeapp"
+        },
+        "cordova-plugin-badge": {
+            "PACKAGE_NAME": "com.yuqingol.dzzofficeapp"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.yuqingol.dzzofficeapp"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.yuqingol.dzzofficeapp"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.yuqingol.dzzofficeapp"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.yuqingol.dzzofficeapp"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.yuqingol.dzzofficeapp"
+        }
+    },
+    "dependent_plugins": {}
+}
