@@ -124,7 +124,7 @@ angular.module('starter.controllers')
           console.log(data.data);
           $scope.view = data.data;
         } else {
-          Helper.noLoginPopup();
+          Helper.showConfirm(data.message);
         }
       });
     }

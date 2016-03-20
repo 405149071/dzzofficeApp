@@ -1,5 +1,5 @@
-var url_base = "http://wj.yuqingol.com/api.php?";
-
+//var url_base = "http://127.0.0.1:83/api.php?"; //dev
+var url_base = 'http://wj.yuqingol.com/';//production
 
 //Auth
 var url_auth = url_base+"mod=user";
@@ -101,7 +101,7 @@ angular.module('starter.services', [])
     }
   }
 })
-  .factory('Helper',function($ionicPopup,$state){
+  .factory('Helper',function($ionicPopup,$state,$ionicHistory){
     return {
       noLoginPopup:function(){
         var confirmPopup = $ionicPopup.confirm({
@@ -114,6 +114,23 @@ angular.module('starter.services', [])
         confirmPopup.then(function (res) {
           if (res) {
             $state.go('login');
+          } else {
+            ionic.Platform.exitApp();
+          }
+        });
+      },
+      showConfirm:function(msg){
+        var confirmPopup = $ionicPopup.confirm({
+          title: '<strong>提示</strong>',
+          template: msg,
+          okText: '确认',
+          cancelText: '退出'
+        });
+        confirmPopup.then(function (res) {
+          if (res) {
+            if(!$ionicHistory.goBack()){
+              $state.go('home');
+            };
           } else {
             ionic.Platform.exitApp();
           }
