@@ -262,3 +262,11 @@ top:80px
 #view .content .container{
   padding: 15px;
 }
+#view .content .dzz-attach-icon{
+  width: 15px;
+}
+#view .content td,#view .content  th{
+  background: white;
+  padding: 5px 10px;
+  border: 1px solid #DDD;
+}
