@@ -270,3 +270,7 @@ top:80px
   padding: 5px 10px;
   border: 1px solid #DDD;
 }
+#view .content table{
+  table-layout: fixed;
+  width: 100%;
+}
