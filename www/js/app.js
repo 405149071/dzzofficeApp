@@ -6,7 +6,7 @@
 angular.module('starter', ['ionic','starter.controllers','starter.services','ngSanitize','ngCordova'])
 
 
-  .run(function ($ionicPlatform,$ionicPopup,$ionicHistory,$state,User,$rootScope,$window) {
+  .run(function ($ionicPlatform,$ionicPopup,$ionicHistory,$state,User,$rootScope,$window,Category) {
     $ionicPlatform.ready(function () {
       var localUser = User.loadUserInfo();
       $rootScope.localUser = localUser;

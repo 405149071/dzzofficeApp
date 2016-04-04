@@ -15,6 +15,11 @@ var LOCAL_CATEGORYS_KEY = 'DZZOFFICE_CATEGORYS_KEY';
     loadCategorys:function (){
      var CategoryStr = window.localStorage.getItem(LOCAL_CATEGORYS_KEY);
       return JSON.parse(CategoryStr);
+    },
+    unreadCount:function(){
+      return $http.get(url_unread_count()).then(function(response){
+        return response.data;
+      })
     }
   }
 

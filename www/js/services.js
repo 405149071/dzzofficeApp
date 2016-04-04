@@ -20,6 +20,10 @@ url_users_user = function(id){
 //news
 var url_news = url_base + "mod=news";
 
+//unreadCount
+url_unread_count=function(){
+  return url_news+"&action=unreadCount";
+}
 
 
 
