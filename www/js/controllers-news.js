@@ -91,7 +91,7 @@ angular.module('starter.controllers')
       });
     }
   })
-  .controller('viewCtrl', function ($scope, $stateParams,$rootScope, $ionicHistory, Views, $state, $ionicLoading, Helper,User) {
+  .controller('viewCtrl', function ($scope, $stateParams,$rootScope, $ionicHistory, Views, $state, $ionicLoading, Helper,User,Category) {
     $ionicLoading.show({
       template: '<div><ion-spinner icon="ios" ></ion-spinner></i></div><div>加载中</div>'
     });
@@ -113,8 +113,7 @@ angular.module('starter.controllers')
     $scope.myGoBack = function () {
       if (!$ionicHistory.goBack()) {
         $state.go('list', {catid: $scope.view.catid});
-      }
-      ;
+      };
     };
 
     function getView(){
@@ -123,6 +122,11 @@ angular.module('starter.controllers')
         if (data.status) {
           console.log(data.data);
           $scope.view = data.data;
+          if (device.platform != "Android") {
+            Category.unreadCount().then(function(count){
+              window.plugins.jPushPlugin.setApplicationIconBadgeNumber(count);
+            });
+          }
         } else {
           Helper.showConfirm(data.message);
         }

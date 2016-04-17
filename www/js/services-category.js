@@ -18,7 +18,12 @@ var LOCAL_CATEGORYS_KEY = 'DZZOFFICE_CATEGORYS_KEY';
     },
     unreadCount:function(){
       return $http.get(url_unread_count()).then(function(response){
-        return response.data;
+        if(response.status){
+          return response.data.data;
+        }else{
+          return 0;
+        }
+
       })
     }
   }

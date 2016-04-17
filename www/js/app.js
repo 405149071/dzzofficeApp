@@ -63,6 +63,23 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
           $state.go('view',{id:id});
         //do something
       };
+      var onOpenNotification = function (event) {
+        try {
+          var alertContent;
+          if (device.platform == "Android") {
+
+          } else {
+            var id = event.id;
+            if (id)
+              $state.go('view', {id: id});
+          }
+
+        }
+        catch (exception) {
+          console.log("JPushPlugin:onOpenNotification" + exception);
+        }
+      };
+
       $window.plugins.jPushPlugin.init();
       //注册Android接收到通知事件
      // $window.plugins.jPushPlugin.receiveMessageInAndroidCallback = _receiveMessageInAndroidCallback
@@ -73,7 +90,15 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
 
       $window.plugins.jPushPlugin.setAlias(localUser.id);
 //调试模式
-      $window.plugins.jPushPlugin.setDebugMode(false);
+      if (device.platform != "Android") {
+        Category.unreadCount().then(function(count){
+          window.plugins.jPushPlugin.setApplicationIconBadgeNumber(count);
+        });
+      } else {
+        window.plugins.jPushPlugin.setDebugMode(true);
+      }
+
+	 document.addEventListener("jpush.openNotification", onOpenNotification, false);
       //handle android backbutton
 
       $ionicPlatform.registerBackButtonAction(function (event) {

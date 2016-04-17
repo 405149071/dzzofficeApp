@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 
   // -----------------User
-  .controller('loginCtrl', function ($scope, $rootScope, $ionicLoading, $ionicPopup, $timeout, $state, User, $ionicHistory,$window) {
+  .controller('loginCtrl', function ($scope, $rootScope, $ionicLoading, $ionicPopup, $timeout, $state, User, $ionicHistory,$window,Category) {
     $scope.uname = window.localStorage.getItem('input_user_name');
     $scope.password = window.localStorage.getItem('input_password');
     var loginStatus = false;
@@ -33,6 +33,11 @@ angular.module('starter.controllers')
             $ionicHistory.clearCache();
             $rootScope.currentUser = data;
             $window.plugins.jPushPlugin.setAlias(data.uid);
+            if (device.platform != "Android") {
+              Category.unreadCount().then(function(count){
+                window.plugins.jPushPlugin.setApplicationIconBadgeNumber(count);
+              });
+            }
             $state.go('home', {reload: true})
           } else {
             $ionicLoading.show({
