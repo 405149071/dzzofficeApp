@@ -91,7 +91,7 @@ angular.module('starter.controllers')
       });
     }
   })
-  .controller('viewCtrl', function ($scope, $stateParams,$rootScope, $ionicHistory, Views, $state, $ionicLoading, Helper,User,Category) {
+  .controller('viewCtrl', function ($scope, $stateParams,$rootScope, $ionicHistory, Views, $state, $ionicLoading, Helper,User,Category,$sce) {
     $ionicLoading.show({
       template: '<div><ion-spinner icon="ios" ></ion-spinner></i></div><div>加载中</div>'
     });
@@ -122,6 +122,7 @@ angular.module('starter.controllers')
         if (data.status) {
           console.log(data.data);
           $scope.view = data.data;
+          $scope.content = $sce.trustAsHtml(data.data.content);
           if (device.platform != "Android") {
             Category.unreadCount().then(function(count){
               window.plugins.jPushPlugin.setApplicationIconBadgeNumber(count);

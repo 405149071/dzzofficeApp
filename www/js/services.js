@@ -38,7 +38,10 @@ url_news_list = function(catid,isHistory,page){
   url_news_list = page ? url_news_list + '&page=' + page : url_news_list;
   return url_news_list + "&catid=" + catid ;
 }
-
+url_search_list = function(keywords){
+  var url_news_list = url_news+"&action=search";
+  return url_news_list + "&keywords=" + keywords ;
+}
 url_news_view = function(id){
   var url_news_view = url_news+"&action=view";
   return url_news_view + "&newid=" + id ;

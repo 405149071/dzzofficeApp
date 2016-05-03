@@ -9,6 +9,11 @@ angular.module('starter.services')
         return response.data;
       })
     },
+    searchList : function(keywords){
+      return $http.get(url_search_list(keywords)).then(function(response){
+        return response.data;
+      })
+    },
     loadView : function(viewId){
       return $http.get(url_news_view(viewId)).then(function(response){
         return response.data;
