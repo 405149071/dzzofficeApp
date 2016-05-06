@@ -12,7 +12,7 @@
         <input name="" type="button" class="ouk" ng-click="search(keywords)" ng-show="svisible">
         <a class="s_close" ng-show="visible" ng-click="cancel()">取消</a>
       </div>
-      <ul ng-if="!searchList">
+      <ul ng-if="!searchList" class="home">
         <li class="icon" ng-if="categorys['c_1'].unread_count>0">
           <i>{{categorys['c_1'].unread_count}}</i>
           <a href="#subCategory/{{categorys['c_1'].catid}}" ng-if="categorys['c_1'].sub!=undefined">
@@ -102,7 +102,7 @@
           </a>
         </li>
       </ul>
-      <ul ng-if="searchList">
+      <ul ng-if="searchList" class="list">
         <li ng-repeat="l in list track by $index" ng-if="list.length>0">
           <a href="#view/{{l.newid}}">
             <div class="icon gray" ng-if="l.isread">

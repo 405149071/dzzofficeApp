@@ -25,13 +25,13 @@ angular.module('starter.controllers')
       if(keywords==undefined||!keywords){
         $ionicPopup.alert({ title: '提示', template:"亲，你还没有输入搜索内容哦"});
       }else{
-        $scope.searchList = true;
-        $scope.visible=!$scope.visible;
-        $scope.svisible =  !$scope.svisible;
         $ionicLoading.show({
           template: '<div><ion-spinner icon="ios" ></ion-spinner><div>加载中</div></div>'
         });
         getList(keywords);
+        $scope.searchList = true;
+        $scope.visible=!$scope.visible;
+        $scope.svisible =  !$scope.svisible;
       }
     }
     $scope.cancel=function(){

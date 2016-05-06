@@ -1,5 +1,5 @@
-//var url_base = "http://127.0.0.1:83/api.php?"; //dev
-var url_base = "http://wj.yuqingol.com/api.php?";//production
+var url_base = "http://127.0.0.1:83/api.php?"; //dev
+//var url_base = "http://wj.yuqingol.com/api.php?";//production
 
 //Auth
 var url_auth = url_base+"mod=user";
