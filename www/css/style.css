@@ -77,8 +77,8 @@ a,h1,button,h2,h3{
   top:44px
 }
 #home .content .home .icon{
-  width: 50%;
-  height: 200px;
+  width: 33.3333333333333%;
+  height: 130px;
   float: left;
   border-right: 1px solid #C4C4C4;
   border-bottom: 1px solid #C4C4C4;
@@ -124,14 +124,14 @@ a,h1,button,h2,h3{
   background: url(../img/search.png) no-repeat;
   position: absolute;
   right: 19px;
-  top: 15px;
+  top: 150px;
 }
 #home .h_s_inner .s_close {
   height: 40px;
   line-height: 40px;
   position: absolute;
   right: 18px;
-  top: 10px;
+  top: 144px;
   font-size: 15px;
   color: #666;
 }

@@ -7,6 +7,9 @@
   </div>
   <ion-content scroll="false">
     <div class="content">
+      <div style="line-height: 0px;">
+        <img src="img/banner.png" style="width: 100%;">
+      </div>
       <div class="h_s_inner clearfix">
         <input name="search" placeholder="信息名称" type="text" class="ink" id="ink" ng-model="keywords">
         <input name="" type="button" class="ouk" ng-click="search(keywords)" ng-show="svisible">
@@ -82,23 +85,89 @@
         <li class="icon" ng-if="categorys['c_3'].unread_count>0">
           <i>{{categorys['c_3'].unread_count}}</i>
           <a href="#list/{{categorys['c_3'].catid}}" ng-if="categorys['c_3'].sub==undefined">
-            <img src="img/qita_count.png">
-            <div>其它报告</div>
+            <img src="img/anli_count.png">
+            <div>案例分析</div>
           </a>
           <a href="#subCategory/{{categorys['c_3'].catid}}" ng-if="categorys['c_3'].sub!=undefined">
-            <img src="img/qita_count.png">
-            <div>其它报告</div>
+            <img src="img/anli_count.png">
+            <div>案例分析</div>
           </a>
         </li>
         <li class="icon" ng-if="categorys['c_3'].unread_count<=0">
           <i>&nbsp;</i>
           <a href="#list/{{categorys['c_3'].catid}}" ng-if="categorys['c_3'].sub==undefined">
-            <img src="img/qita.png">
-            <div>其它报告</div>
+            <img src="img/anli.png">
+            <div>案例分析</div>
           </a>
           <a href="#subCategory/{{categorys['c_3'].catid}}" ng-if="categorys['c_3'].sub!=undefined">
-            <img src="img/qita.png">
-            <div>其它报告</div>
+            <img src="img/anli.png">
+            <div>案例分析</div>
+          </a>
+        </li>
+        <li class="icon" ng-if="categorys['c_17'].unread_count>0">
+          <i>{{categorys['c_17'].unread_count}}</i>
+          <a href="#list/{{categorys['c_17'].catid}}" ng-if="categorys['c_17'].sub==undefined">
+            <img src="img/keti_count.png">
+            <div>课题研究</div>
+          </a>
+          <a href="#subCategory/{{categorys['c_17'].catid}}" ng-if="categorys['c_17'].sub!=undefined">
+            <img src="img/keti_count.png">
+            <div>课题研究</div>
+          </a>
+        </li>
+        <li class="icon" ng-if="categorys['c_17'].unread_count<=0">
+          <i>&nbsp;</i>
+          <a href="#list/{{categorys['c_17'].catid}}" ng-if="categorys['c_17'].sub==undefined">
+            <img src="img/keti.png">
+            <div>课题研究</div>
+          </a>
+          <a href="#subCategory/{{categorys['c_17'].catid}}" ng-if="categorys['c_17'].sub!=undefined">
+            <img src="img/keti.png">
+            <div>课题研究</div>
+          </a>
+        </li>
+        <li class="icon" ng-if="categorys['c_15'].unread_count>0">
+          <i>{{categorys['c_15'].unread_count}}</i>
+          <a href="#list/{{categorys['c_15'].catid}}" ng-if="categorys['c_15'].sub==undefined">
+            <img src="img/qianzhi_count.png">
+            <div>前置风险评估</div>
+          </a>
+          <a href="#subCategory/{{categorys['c_15'].catid}}" ng-if="categorys['c_15'].sub!=undefined">
+            <img src="img/qianzhi_count.png">
+            <div>前置风险评估</div>
+          </a>
+        </li>
+        <li class="icon" ng-if="categorys['c_15'].unread_count<=0">
+          <i>&nbsp;</i>
+          <a href="#list/{{categorys['c_15'].catid}}" ng-if="categorys['c_15'].sub==undefined">
+            <img src="img/qianzhi.png">
+            <div>前置风险评估</div>
+          </a>
+          <a href="#subCategory/{{categorys['c_15'].catid}}" ng-if="categorys['c_15'].sub!=undefined">
+            <img src="img/qianzhi.png">
+            <div>前置风险评估</div>
+          </a>
+        </li>
+        <li class="icon" ng-if="categorys['c_16'].unread_count>0">
+          <i>{{categorys['c_16'].unread_count}}</i>
+          <a href="#list/{{categorys['c_16'].catid}}" ng-if="categorys['c_16'].sub==undefined">
+            <img src="img/xuanchuan_count.png">
+            <div>宣传效果评估</div>
+          </a>
+          <a href="#subCategory/{{categorys['c_16'].catid}}" ng-if="categorys['c_16'].sub!=undefined">
+            <img src="img/xuanchuan_count.png">
+            <div>宣传效果评估</div>
+          </a>
+        </li>
+        <li class="icon" ng-if="categorys['c_16'].unread_count<=0">
+          <i>&nbsp;</i>
+          <a href="#list/{{categorys['c_16'].catid}}" ng-if="categorys['c_16'].sub==undefined">
+            <img src="img/xuanchuan.png">
+            <div>宣传效果评估</div>
+          </a>
+          <a href="#subCategory/{{categorys['c_16'].catid}}" ng-if="categorys['c_16'].sub!=undefined">
+            <img src="img/xuanchuan.png">
+            <div>宣传效果评估</div>
           </a>
         </li>
       </ul>
