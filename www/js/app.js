@@ -90,13 +90,13 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngS
 
       $window.plugins.jPushPlugin.setAlias(localUser.id);
 //调试模式
-      if (device.platform != "Android") {
+      //if (device.platform != "Android") {
         Category.unreadCount().then(function(count){
           window.plugins.jPushPlugin.setApplicationIconBadgeNumber(count);
         });
-      } else {
+    //  } else {
         window.plugins.jPushPlugin.setDebugMode(true);
-      }
+   //   }
 
 	 document.addEventListener("jpush.openNotification", onOpenNotification, false);
       //handle android backbutton
