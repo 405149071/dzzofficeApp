@@ -30,6 +30,7 @@ a,h1,button,h2,h3{
 }
 .read{
   color: red;
+  font-size: 14px;
 }
 /*---------------------------------------------------login-----------------------------------------------------------------------*/
 #login{
@@ -78,22 +79,23 @@ a,h1,button,h2,h3{
 }
 #home .content .home .icon{
   width: 33.3333333333333%;
-  height: 130px;
+  height: 100px;
   float: left;
-  border-right: 1px solid #C4C4C4;
-  border-bottom: 1px solid #C4C4C4;
+  border-right: 1px solid #efecec;
+  border-bottom: 1px solid #efecec;
   text-align: center;
   list-style: none;
 }
 #home .content .home  .icon i{
   position: relative;
-  left: 30px;
-  top: 25px;
+  left: 21px;
+  top: 22px;
   color: #fff;
+  font-size: 12px;
 }
 #home .content .home .icon a{
   display: block;
-  height: 200px;
+  height: 77px;
 }
 #home .content .home  a{
   color:#000;
@@ -103,7 +105,7 @@ a,h1,button,h2,h3{
   padding-left: 10px;
 }
 #home .h_s_inner{
-  background-color: #C4C4C4;
+  background-color: #efecec;
   height: 60px;
 }
 #home .h_s_inner input {
@@ -225,6 +227,8 @@ top:80px
 #subCategory ul li a{
   display: inline-block;
   width: 100%;
+  color: #000;
+  font-size: 14px;
 }
 #subCategory li > a {
   font-size: 20px;
@@ -233,6 +237,7 @@ top:80px
 }
 #subCategory li > a > img {
   vertical-align: middle;
+  width: 50px;
 }
 #subCategory .scroll-bar{
   display: none;
@@ -247,13 +252,13 @@ top:80px
   top:64px
 }
 #list .content li{
-  border-bottom: 1px solid #E0E0E0 ;
+  border-bottom: 1px solid #EFECEC ;
 }
 #list .content li a div{
   float: left;
 }
 #list .content li a{
-  padding: 15px 15px 15px 10px;
+  padding: 15px 15px 5px 10px;
   display: inline-block;
 
 }
